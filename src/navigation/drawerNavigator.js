@@ -71,7 +71,7 @@ export function DrawerNavigator() {
                     drawerIcon:({focussed,size})=>(
                         <Icon
                             type='material'
-                            name="driver"
+                            name="home"
                             color={focussed ? '#7cc' : colors.grey3}
                             size={size}
                         />
