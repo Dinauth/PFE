@@ -6,6 +6,10 @@ import { Icon } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable'
 import {categoryData} from '../global/data'
 import { useNavigation } from '@react-navigation/native';
+import filter from 'lodash/filter'
+
+
+
 export function SearchComponent() {
 
 
@@ -14,6 +18,23 @@ export function SearchComponent() {
     const [modalVisible,setModalVisible] = useState(false)
     const [texInputFossued,setTexInputFossued] = useState(true)
     const textInput = useRef(0)
+    const contains = ({name},query)=>{
+        const lower = name.toLowerCase();
+        const q = query.toLowerCase();
+        if(lower.includes(q)){
+            return true
+        }
+        return false
+    }
+
+    const handleSearch = (text) =>{
+        const dataSearch = filter(categoryData,userSearch =>{
+           
+            return contains(userSearch,text)
+        })
+        
+        setData([...dataSearch])
+    }
 
     return(
         <View style={{alignItems:'center'}}>
@@ -42,17 +63,21 @@ export function SearchComponent() {
                 <View style={styles.view1}>
 
                     <View style={styles.textInput}>
-                        <Animatable.View>
+                        <Animatable.View
+                            animation={ texInputFossued ? "fadeInRight" : "fadeInLeft"}
+                            duration={400}
+                        
+                        >
                             <Icon 
                                 name ={texInputFossued ? "arrow-back" :"search"}
                                 type="material"
                                 iconStyle={{marginRight:5}}
                                 style={styles.icon2}
                                 onPress={()=>{
-                                    if (texInputFossued) {
+                                    if (texInputFossued) 
                                         setModalVisible(false)
-                                        setTexInputFossued(false)
-                                    }
+                                        setTexInputFossued(true)
+                                    
                                     
                                 }}
                             />
@@ -62,16 +87,28 @@ export function SearchComponent() {
                             placeholder=''
                             autoFocus ={false}
                             ref={textInput}
+                            onFocus={()=>{
+                                setTexInputFossued(true)
+                            }}
+                            onBlur={()=>{
+                                setTexInputFossued(false)
+                            }}
+
+                            onChangeText={handleSearch}
                         />
 
-                        <Animatable.View>
+                        <Animatable.View
+                        animation={ texInputFossued ? "fadeInLeft" : ""}
+                        duration={400}
+                        >
                             <Icon 
                                 name = {texInputFossued ? "cancel": null}
                                 type='material'
                                 style={{marginRight:-10}}
                                 onPress={()=>{
                                     textInput.current.clear()
-                                    //handleSearch()
+                                    handleSearch('')
+                                    
                                 }
                                 }
                             />
@@ -87,7 +124,7 @@ export function SearchComponent() {
                         <TouchableOpacity
                         onPress={()=>{
                             Keyboard.dismiss
-                            NavigationPreloadManager.navigate("Search")
+                            navigation.navigate("searchScreenResult",{item:item.name})
                             setModalVisible(false)
                             setTexInputFossued(true)
                         }}

@@ -7,6 +7,7 @@ import { colors } from '../global/style';
 import { Orders } from '../screen/orders';
 import { Search } from '../screen/search';
 import { Account } from '../screen/account';
+import { ClientStack } from './clientStack';
 
 
 const ClientTabs = createBottomTabNavigator();
@@ -43,7 +44,7 @@ export function ClientTab() {
 
 <ClientTabs.Screen 
                 name = "Search"
-                component={Search}
+                component={ClientStack}
                 options={ 
                     {
                         tabBarLabel: "Search",

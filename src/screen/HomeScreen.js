@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, FlatList, Pressable, Image, Dimensions  } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, FlatList, Pressable, Image, Dimensions, StatusBar  } from "react-native";
 import { Icon } from 'react-native-elements';
 import { HomeHeader } from '../components/HeaderHome';
 import { colors, parameters } from '../global/style';
@@ -18,6 +18,11 @@ export function Home({navigation}) {
     
     return(
         <View style={styles.container}>
+            <StatusBar
+                translucent
+                barStyle='light-content'
+                backgroundColor='rgba(255,140,82,1)'
+            />
             <HomeHeader 
                 navigation={navigation}
             />
@@ -241,7 +246,7 @@ showsVerticalScrollIndicator={true}
 
 
 const styles = StyleSheet.create({
-    container: {flex:1},
+    container: {flex:1,paddingTop:20},
     deliveryButton:{
         paddingHorizontal:20,
         borderRadius:15,

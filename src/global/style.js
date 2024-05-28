@@ -39,6 +39,33 @@ export const parameters = {
 
 }
 
+
 export const title = {
-    color:"#ff8c52"
+    color:"#ff8c52",
+    fontSize:20,
+    fontWeight:'bold'
+}
+
+
+export const fonts = {
+    ios:{
+        regular:'system',
+        light:'system',
+        lighItalic:'system',
+        bold:'system',
+        boldItalic:'system',
+        black:'system',blackItalic:'system'
+    },
+    android:{
+        regular:'Roboto',
+        italic:'Roboto-Italic',
+        thin:'Roboto-Thin',
+        bold:'Roboto-Bold',
+        light:'Roboto-Light',
+        meduim:'Roboto-Meduim',
+        lightItalic:'Roboto-LightItalic',
+        thinItalic:'Roboto-ThinItalic',
+        boldItalic:'Roboto-BoldItalic',
+        meduimItalic:'Roboto-MeduimItalic'
+    }
 }
