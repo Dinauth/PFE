@@ -4,8 +4,12 @@ import { colors } from './src/global/style';
 import { Sign } from './src/screen/auth/sign';
 import { SignWelcome } from './src/screen/auth/welcome';
 import { RootNavigation } from './src/navigation/rootNavigation';
+import { SignInContextProvider } from './src/context/authContext';
+import { enableScreens } from 'react-native-screens';
 export default function App() {
+  enableScreens();
   return (
+    <SignInContextProvider>
     <View style={styles.container}>
       <StatusBar barStyle="light-content"
           backgroundColor={colors.statusBar}/>
@@ -15,6 +19,7 @@ export default function App() {
       
           
     </View>
+    </SignInContextProvider>
   );
 }
 

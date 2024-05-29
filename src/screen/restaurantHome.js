@@ -42,7 +42,7 @@ const menuPress=()=>{
     
 
 
-        const UpdateRoute1 = ()=>{
+        const updateRoute = ()=>{
             return(
                 <View>
 
@@ -107,7 +107,7 @@ const menuPress=()=>{
                     <View style={styles.view10}>
                         <TabView
                             navigationState={{index,routes}}
-                            renderScene={UpdateRoute1}
+                            renderScene={updateRoute}
                             onIndexChange={setIndex}
                             initialLayout={initialLayout}
                             renderTabBar={renderTabBar}
@@ -120,20 +120,7 @@ const menuPress=()=>{
                         />
                     }
             </ScrollView>
-            <TouchableOpacity>
-                <View style={styles.view11}>
-                    <View style={styles.view12}>
-                        <Text style={styles.text12}>
-                            View cart
-                        </Text>
-                        <View style={styles.view13}>
-                            <Text style={styles.text13}>
-                                0
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-            </TouchableOpacity>
+            
                     
 
         </View>

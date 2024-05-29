@@ -13,6 +13,7 @@ export function Search({navigation}) {
 
     return(
         <View style={styles.container}>
+           
            <SearchComponent />
            <View>
                 <FlatList 

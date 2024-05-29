@@ -15,12 +15,15 @@ export const RouteMenu = ({navigation,route})=>{
             data ={menuDetailedData}
             keyExtractor={(item,index)=>index.toString()}
             renderItem={({item,index})=>(
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                        onPress={()=>{navigation.navigate('PreferenceScreen',{index})}}
+                        >
                              <MenuCard
                                 productName ={item.meal}
                                 image ={item.image}
                                 price ={item.price}
                                 productDetails = {item.details}
+                                
                              />
                         </TouchableOpacity>
                     )}

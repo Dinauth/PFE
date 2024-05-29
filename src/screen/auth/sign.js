@@ -1,26 +1,69 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef,useContext,createContext} from 'react';
 import * as Animable from "react-native-animatable";
-import { View, Text, StyleSheet, Dimensions, TextInput } from "react-native";
+import { View, Text, StyleSheet, TextInput,Alert } from "react-native";
 import { colors, parameters, title } from '../../global/style';
 import { Icon, Button, SocialIcon } from 'react-native-elements';
 import { Header } from '../../components/header';
+import { Formik } from 'formik';
+import auth from '@react-native-firebase/auth'
+import { SignInContext } from '../../context/authContext';
+import { Home } from '../HomeScreen';
+
 
 
 export function Sign({navigation}) {
 
+    const {dispatchSignedIn} = useContext(SignInContext)
 
+  if (dispatchSignedIn.userToken != null ) {
+    return(
+        <Home
+        navigation={navigation}
+        />
+    )
+  }
+
+        
         const[textInput, setTextInput] = useState(false)
 
         const textInput1 = useRef(1)
         const textInput2 = useRef(2)
 
+        async function signIn(data){
+            try{
+            const {password,email} = data
+            if (email && password) {
+                const user = await auth().signInWithEmailAndPassword(email,password)
+            if(user){
+                
+                dispatchSignedIn({type:"UPDATE_SIGN_IN",payload:{userToken:user}})
+            }
+            }else{
+                Alert.alert(
+                    "check your form",
+                    "there are required fields"
+                )
+            }
+            
+            
+        }
+            catch(error){
+                Alert.alert(
+                    error.name,
+                    error.message
+                )
+            }
+        
+        }
 
 
 
 
 
     return (
-        <View style={styles.container}>
+       
+        
+            <View style={styles.container}>
 
 <Header title="MY ACCOUNT" type="arrow-left" navigation = {navigation} />
 
@@ -39,13 +82,24 @@ export function Sign({navigation}) {
                 </Text>
         </View>
 
-
+        <Formik 
+                initialValues = {{email:'',password:''}}
+                onSubmit = {(values)=>{
+                           signIn(values)
+   
+                        }}
+                    >
+                    { (props)=>(
+                <View>
+               
         <View style = {styles.input}>
             <View>
                 <TextInput
                 style = {styles.email}
                 placeholder='Email'
                 ref={textInput1}
+                onChangeText = {props.handleChange('email')}
+                value ={props.values.email}
                 />
 
                 
@@ -72,6 +126,8 @@ export function Sign({navigation}) {
                onBlur={()=>{
                 setTextInput(true)
                }}
+               onChangeText = {props.handleChange('password')}
+               value = {props.values.password}
                />
                 <Animable.View  animation={textInput ? "" : "fadeInLeft"} duration={400}>
                     
@@ -97,11 +153,14 @@ export function Sign({navigation}) {
             title="SIGN IN"
             buttonStyle={parameters.buttonStyle}
             titleStyle={parameters.buttonTitle}
-            onPress={()=>{
-                navigation.navigate("Drawer")
-            }}
+            onPress ={props.handleSubmit}
             />
         </View>
+            </View>
+                    )}
+        </Formik>
+
+
 
 
                <View style = {{alignItems:"center"}}>
@@ -142,10 +201,15 @@ export function Sign({navigation}) {
                     title='Create an account'
                     buttonStyle={styles.createButton}
                     titleStyle={styles.createTitle}
+                    onPress ={()=>{navigation.navigate("SignUpScreen")}}
                  />
                </View>
 
+       
         </View>
+       
+
+
     )
     
 }
