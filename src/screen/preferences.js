@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Text, StyleSheet, View,ScrollView,Image,Platform } from 'react-native'
+import React, { Component,useContext } from 'react'
+import { Text, StyleSheet, View,ScrollView,Image,Platform, TouchableOpacity } from 'react-native'
 import {colors} from '../global/style'
 import {
     Icon,
@@ -17,10 +17,21 @@ export  class PreferenceScreen extends Component {
             preference:menuDetailedData[this.props.route.params.index].preferenceData,
             required:menuDetailedData[this.props.route.params.index].required,
             minimum_quantity :menuDetailedData[this.props.route.params.index].minimum_quatity,
-          }
+            counter:menuDetailedData[this.props.route.params.index].counter,
+            quantity:1,
+            totalPrice:0, 
+            restaurantID:menuDetailedData[this.props.route.params.index].restaurantID,
+            meal:menuDetailedData[this.props.route.params.index].meal,
+            id:this.props.route.params.index
+        }
+       
+        this.totalPrice=0
+       
+          
         }
 
     render() {
+       
         const index  = this.props.route.params.index
         const {meal,details,price} = menuDetailedData[index];
         
@@ -31,7 +42,7 @@ export  class PreferenceScreen extends Component {
                     <View style ={styles.header}>
                         <Image
                             style ={styles.backgroundImage}
-                            source ={{uri:"https://bukasapics.s3.us-east-2.amazonaws.com/macdo.png"}}
+                            source ={menuDetailedData[index].image}
                         />
                      </View>
                      <View style ={styles.bar}>
@@ -69,7 +80,7 @@ export  class PreferenceScreen extends Component {
                                 />
                                 <Text style ={styles.text5}>- - - - -</Text>
                             </View>
-                            <Text style ={styles.text6}>R{price.toFixed(2)}</Text>
+                            <Text style ={styles.text6}>€{price.toFixed(2)}</Text>
                         </View>
                      </View>
                      <View>
@@ -84,23 +95,84 @@ export  class PreferenceScreen extends Component {
                              }
                           </View>
                           <View style ={styles.view10}>
-                              {item.map(items => 
+                              {item.map(items => (
+                               
+                            <TouchableOpacity key={items.id}
+                            onPress={()=>{
+                               const id = this.state.preference.indexOf(item) 
+                               if(this.state.minimum_quantity[id] !== null){
+                                const check = item.filter(items => items.checked?items:null)
+                                this.state.preference[id].forEach(i=>{
+                                    if (i.id===items.id) {
+                                        if(check.length < this.state.minimum_quantity[id]){
+                                            if(i.checked && this.totalPrice-items.price>=0){
+                                                this.totalPrice=this.totalPrice-items.price
+                                            }else{
+                                                this.totalPrice=this.totalPrice+items.price
+                                            }
+                                            i.checked = !i.checked;
+                                            
+                                        }else{
+                                            if (i.checked && this.totalPrice-items.price>=0) {
+                                                this.totalPrice=this.totalPrice-items.price 
+                                               }
+                                            i.checked = false;
+                                            
+                                          
+                                           
+                                           
+                                            
+                                        }
+                                    }
+
+                                    
+                                })
+                                
+                                this.state.counter[id] = this.state.counter[id]+1;
+                                this.setState({
+                                    preference:[...this.state.preference],
+                                    counter:[...this.state.counter],
+                                })
+                               }else{
+                                this.state.preference[id].forEach(i=>{
+                                    if(i.id===items.id){
+                                        if(i.checked && this.totalPrice-items.price>=0){
+                                            this.totalPrice=this.totalPrice-items.price
+                                        }else{
+                                            this.totalPrice=this.totalPrice+items.price
+                                        }
+                                        i.checked = !i.checked
+                                        
+                                    }
+                                })
+                                this.setState({
+                                    preference:[...this.state.preference],
+                                    })
+                               }
+                            }}
+                            >
                                 <View style ={styles.view4}>
                                       <View style ={styles.view19}>
                                           <View style ={styles.view6}>
+                                            {
+                                                this.totalPrice==0 ? items.checked=false:items.checked
+                                                
+                                            }
                                             <CheckBox 
                                                 center
                                                 checkedIcon = "check-square-o"
                                                 uncheckedIcon = "square-o"
-                                                checked ={false}
+                                                checked ={items.checked}
                                                 checkedColor ={colors.buttons}
 
                                               />
                                               <Text style ={{color:colors.grey2,marginLeft:-10}}>{items.name}</Text>
                                           </View>
-                                          <Text style ={styles.text6}>R{items.price.toFixed(2)}</Text>
+                                          <Text style ={styles.text6}>€{items.price.toFixed(2)}</Text>
                                       </View>
                                   </View>
+                             </TouchableOpacity>
+                              )
                      )}
                           </View>
                        </View>)
@@ -118,25 +190,60 @@ export  class PreferenceScreen extends Component {
                           type = "material"
                           color ={colors.black}
                           size ={25}
-                          onPress ={()=>{}}
+                          onPress ={()=>{this.state.quantity>0 ?this.state.quantity=this.state.quantity-1 : 0;
+                            this.setState({
+                                quantity:this.state.quantity,
+                            })}}
                             />
                    </View>  
-                   <Text style ={styles.text9}>1</Text>  
+                   <Text style ={styles.text9}>{this.state.quantity}</Text>  
                    <View style ={styles.view16}>
                       <Icon 
                             name ="add"
                             type = "material"
                             color ={colors.black}
                             size ={25}
-                            onPress ={()=>{}}
+                            onPress ={()=>{this.state.quantity=this.state.quantity+1
+                                this.setState({
+                                    quantity:this.state.quantity,
+                                })
+                            }}
                               />
                    </View> 
                 </View>
+                <TouchableOpacity
+                onPress={()=>{
+                    let checked=true;
+                    
+                    console.log(this.session,this.props.route.params.index)
+                    this.state.preference.map(item=>{
+                        const id = this.state.preference.indexOf(item) 
+                        const check = item.filter(items => items.checked?items:null)
+                        
+                    if(check.length < this.state.minimum_quantity[id]){
+                        checked=false
+                        
+                    }
+                  
+
+                    })
+                    
+                    if (checked) { 
+                        this.state.totalPrice=this.totalPrice
+                        this.props.navigation.navigate("RestaurantHome",{id:this.state.restaurantID,name:" ",state:this.state})
+                    }else{
+                        console.log("not complete")
+                         checked=true;
+                    }
+
+                }}
+                >
                 <View style ={styles.view17}>
                     <View style ={styles.view18}>
-                        <Text style ={styles.text10}>Add 1 to Cart R78.21</Text>
+                        <Text style ={styles.text10}>Add {this.state.quantity} to Cart €{(this.totalPrice*this.state.quantity).toFixed(2)}</Text>
                     </View>
                 </View>
+                </TouchableOpacity>
             </View>
         )
     }

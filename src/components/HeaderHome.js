@@ -1,14 +1,30 @@
 import React from 'react';
 
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { colors, parameters } from '../global/style';
 import { Icon,withBadge } from 'react-native-elements';
 
+export  function HomeHeader({navigation,card}){
+   
+    
+  
+    console.log(card,"header home")
 
-
-export  function HomeHeader({navigation}){
-
-    const BadgeIcon = withBadge(0)(Icon)
+    const BadgeIcon = card ? withBadge(getQuantity())(Icon):withBadge(0)(Icon)
+        
+   function getQuantity(){
+    let qte=0;
+    
+        
+        console.log(card,"header")
+        card.forEach(elt=>{
+            qte=qte+elt.quantity
+            console.log(qte,'qye')
+           
+        })
+        return qte
+    
+    }
 
     return(
         <View style={styles.header}>
@@ -27,14 +43,30 @@ export  function HomeHeader({navigation}){
             <View style={{alignItems:'center', justifyContent:'center'}}>
                 <Text style={{color:colors.cardBackground, fontSize:25, fontWeight:'bold'}}>Xpressfood</Text>
             </View>
-            <View style={{alignItems:'center', justifyContent:'center', marginRight:15}}>
+            <TouchableOpacity
+            onPress={()=>{
+               navigation.navigate("CardScreen",{card:card}) 
+            }}
+            >
+            { !card ?
+                <View style={{alignItems:'center', justifyContent:'center', marginRight:15}}>
                 <BadgeIcon 
                     type = 'material-community'
                     name = 'cart'
                     size = {35}
                     color = {colors.cardBackground}
+                    
                 />
-            </View>
+            </View>:<View style={{alignItems:'center', justifyContent:'center', marginRight:20,marginTop:10}}>
+                <BadgeIcon 
+                    type = 'material-community'
+                    name = 'cart'
+                    size = {35}
+                    color = {colors.cardBackground}
+                    
+                />
+            </View>}
+            </TouchableOpacity>
         </View>
     )
 }

@@ -35,7 +35,20 @@ export const RouteMenu = ({navigation,route})=>{
         </View>
     )
 }
-export const Route2 = ()=>(<View style={styles.scene}/>)
+
+export const Route2 = ({navigation,route})=>{
+
+    return(
+        <View style={{flex:1}}>
+            <View style={styles.view2}>
+            <Text> Route 2</Text>
+           
+            </View>
+           
+        </View>
+    )
+}
+
 export const Route3 = ()=>(<View style={styles.scene}/>)
 
 const styles = StyleSheet.create({

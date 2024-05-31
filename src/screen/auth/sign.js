@@ -1,4 +1,4 @@
-import React, {useState, useRef,useContext,createContext} from 'react';
+import React, {useState, useRef,useContext,useEffect} from 'react';
 import * as Animable from "react-native-animatable";
 import { View, Text, StyleSheet, TextInput,Alert } from "react-native";
 import { colors, parameters, title } from '../../global/style';
@@ -15,13 +15,16 @@ export function Sign({navigation}) {
 
     const {dispatchSignedIn} = useContext(SignInContext)
 
-  if (dispatchSignedIn.userToken != null ) {
-    return(
-        <Home
-        navigation={navigation}
-        />
-    )
-  }
+    useEffect(()=>{
+        auth().onAuthStateChanged((user)=>{
+          if(user){
+            dispatchSignedIn({type:"UPDATE_SIGN_IN",payload:{userToken:user}})
+          }else{
+            dispatchSignedIn({type:"UPDATE_SIGN_IN",payload:{userToken:null}})
+          }
+        })
+        
+      },[])
 
         
         const[textInput, setTextInput] = useState(false)

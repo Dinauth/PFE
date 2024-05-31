@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useContext} from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, FlatList, Pressable, Image, Dimensions  } from "react-native";
 import { Icon } from 'react-native-elements';
@@ -9,10 +9,13 @@ import { Search } from '../screen/search';
 import { Account } from '../screen/account';
 import { ClientStack } from './clientStack';
 
+import { SignInContext } from '../context/authContext';
+
 
 const ClientTabs = createBottomTabNavigator();
 
 export function ClientTab() {
+    const {signedIn} = useContext(SignInContext)
 
     return(
         <ClientTabs.Navigator
@@ -26,6 +29,7 @@ export function ClientTab() {
             <ClientTabs.Screen 
                 name = "Home"
                 component={Home}
+                initialParams={{card:signedIn.userCard}}
                 options={ 
                     {
                         
@@ -97,6 +101,7 @@ export function ClientTab() {
                     }
                 }
             />
+
         </ClientTabs.Navigator>
     )
     

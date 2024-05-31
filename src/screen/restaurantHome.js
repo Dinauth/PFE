@@ -1,11 +1,12 @@
-import React,{useState} from "react";
-import { StyleSheet, Text, View,Dimensions, ScrollView, TouchableOpacity, Modal } from "react-native";
+import React,{useState, useContext,useEffect} from "react";
+import { StyleSheet, Text, View,Dimensions, ScrollView } from "react-native";
 import { RestaurantHeader } from "../components/restaurantHeader";
 import { colors, fonts } from "../global/style";
-import { menu, restaurantData } from "../global/data";
+import { restaurantData } from "../global/data";
 import { Icon } from "react-native-elements";
 import {TabView, TabBar} from 'react-native-tab-view';
 import { Menu } from "./restaurantTabs/menu";
+import { SignInContext } from "../context/authContext";
 
 
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -13,6 +14,33 @@ const initialLayout = SCREEN_WIDTH
 
 
 export const RestaurantHome = ({navigation,route})=>{
+    const {dispatchSignedIn} = useContext(SignInContext)
+    const {signedIn} = useContext(SignInContext)
+    
+    
+        
+        useEffect(()=>{
+            console.log("useEffet")
+            if (route.params.state ) {
+                
+            if (signedIn.userCard && signedIn.userCard.length) {
+                console.log(signedIn.userCard.length)
+                signedIn.userCard.push(route.params.state)
+                console.log("existe")
+                dispatchSignedIn({type:"CARD_UPDATE",payload:{userCard:signedIn.userCard}})
+                route.params.state=null
+            }else{
+                dispatchSignedIn({type:"CARD_UPDATE",payload:{userCard:[route.params.state]}})
+                console.log("existe pas")
+                route.params.state=null
+            }
+        }
+          },[navigation,route])
+          
+        
+        
+    
+    
     const {id,name}=route.params
     const [routes] = useState([
         {key:'first', title:'Menu'},

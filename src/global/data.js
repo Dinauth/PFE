@@ -154,15 +154,20 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
               minimum_quatity:[2,1,1,null,null],
               counter:[0,0,0,0,0],
               required: [true,true,true,false,false],              
-              id:0
+              id:0,
+              restaurantID:0
             },
           
+           
             { 
+              
               meal:"Hand cut chips", 
               price:29.30,
               image:require("../../assets/icon.png"),
               details:"Two 100% fresh beef burger patties that are hot,deliciously",
+              
               preferenceTitle:["Choose your 2 dips","Choose your 1st drink flavour", "Choose your 2nd drink flavour","Would you like to add a side?","Would you Like any extra sauce?"  ],
+              
               preferenceData: [
         
                 [{name:"Jalapeno Dip",price:8.91,checked:false,id:0},{name:"Sweet & Sour Dip",price:8.75,checked:false ,id:1},{name:'BBQ Dip',price:11.99 ,checked:false,id:2},
@@ -187,11 +192,14 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
                 {name:'Small Strawberry Shake',price:16.95,checked:false ,id:6},{name:'Small Chocolate Shake',price:16.95 ,checked:false,id:7},{name:'Small Vanilla Shake',price:17.95,checked:false ,id:8},
                 ],
                 ],
-                minimum_quatity:[2,1,2,null,null],
-                counter:[0,0,0,0,0],
-                required: [true,true,true,false,false], 
-                id:1
+        
+              minimum_quatity:[2,1,1,null,null],
+              counter:[0,0,0,0,0],
+              required: [true,true,true,false,false],     
+              id:5,
+              restaurantID:1
             },
+        
           
             {
               meal:"Chicken Burger",
@@ -227,7 +235,8 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
                 minimum_quatity:[2,1,1,null,null],
                 counter:[0,0,0,0,0],
                 required: [true,true,true,false,false],   
-              id:2
+              id:2,
+              restaurantID:2
             },
           
             {
@@ -264,7 +273,8 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
                 minimum_quatity:[2,1,1,null,null],
                 counter:[0,0,0,0,0],
                 required: [true,true,true,false,false],    
-              id:3
+              id:3,
+              restaurantID:3
             },
           
             
@@ -305,7 +315,8 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
               minimum_quatity:[2,1,1,null,null],
               counter:[0,0,0,0,0],
               required: [true,true,true,false,false],     
-              id:4
+              id:4,
+              restaurantID:0
             },
         
             { 
@@ -341,8 +352,26 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
               minimum_quatity:[2,1,1,null,null],
               counter:[0,0,0,0,0],
               required: [true,true,true,false,false],              
-              id:5
+              id:5,
+              restaurantID:2
             },
           
           ];
+
+          export const optionDelivery=[
+            {
+              name:"leave At Door",
+              id:7,
+              type:"door-open"
+            },
+            {
+              name:"meet At Door",
+              id:9,
+              type:"account"
+            },
+            {
+              name:"On Place",
+              id:8
+            }
+    ]
            

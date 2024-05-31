@@ -23,12 +23,12 @@ const renderScene = ({route})=>{
             return <RouteMenu
             route={route}
             navigation={navigation}/>
-        case 1:
+        case 2:
             
             return <Route2
             route={route}
             navigation={navigation}/>
-        case 1:
+        case 3:
             
             return <Route3
             route={route}

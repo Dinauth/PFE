@@ -10,6 +10,8 @@ import { RestaurantHome } from "../screen/restaurantHome";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { MenuProd } from "../screen/restaurantTabs/menuProduct";
 import {PreferenceScreen} from "../screen/preferences";
+import { Card } from "../screen/cardScreen";
+import { Checkout } from "../screen/checkOut";
 
 const clientSearch = createStackNavigator()
 
@@ -74,6 +76,9 @@ export function ClientStack({navigation,route}){
                     })
                 }
             />  
+
+
+       
         </clientSearch.Navigator>
         
     )

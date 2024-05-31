@@ -7,6 +7,7 @@ export const SignInContext = createContext()
 
 const[signedIn,dispatchSignedIn] = useReducer(SignInReducer,{
     userToken:null,
+    userCard:[]
 })
 
 return(

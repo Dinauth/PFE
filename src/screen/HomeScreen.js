@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useContext} from 'react';
 
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, FlatList, Pressable, Image, Dimensions, StatusBar  } from "react-native";
 import { Icon } from 'react-native-elements';
@@ -7,11 +7,13 @@ import { colors, parameters } from '../global/style';
 import CountDown from 'react-native-countdown-component';
 import { categoryData,restaurantData } from '../global/data';
 import { FoodCard } from '../components/FoodCard';
+import { SignInContext } from '../context/authContext';
 
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
-export function Home({navigation}) {
+export function Home({navigation,route}) {
+    const {signedIn} = useContext(SignInContext)
 
     const [delivery, setDelivery] = useState(true)
     const [indexCheck, setindexCheck] = useState("0")
@@ -23,8 +25,10 @@ export function Home({navigation}) {
                 barStyle='light-content'
                 backgroundColor='rgba(255,140,82,1)'
             />
-            <HomeHeader 
+            
+                <HomeHeader 
                 navigation={navigation}
+                card={signedIn.userCard}
             />
 <ScrollView
 stickyHeaderIndices={[0]}
