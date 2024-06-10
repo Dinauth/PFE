@@ -1,0 +1,19 @@
+version: '2.2'
+
+services:
+  dockerrunandroid:
+    build:
+      context: .
+    tty: true
+    network_mode: "host"
+    ports:
+      - '5037:5037'
+    volumes:
+      # change dockerRunAndroid to your project name
+      - ./:/opt/my-app
+     
+    healthcheck:
+      disable: true
+    
+volumes:
+  notused:
