@@ -19,10 +19,15 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - name: Run script file
+    - name: Run deploy script file 
       run: |
          chmod +x ./scripts/deploy.sh
          ./scripts/deploy.sh
+      shell: bash
+    - name: Run destroy script file 
+      run: |
+         chmod +x ./scripts/destroy.sh
+         ./scripts/destroy.sh
       shell: bash
 
 
