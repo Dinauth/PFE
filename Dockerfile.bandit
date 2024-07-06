@@ -1,0 +1,7 @@
+FROM python:latest
+
+RUN pip install bandit
+
+COPY . /PFE
+
+CMD ["bandit", "-r", "./", "-f", "json", "-o", "/PFE/bandit_results.json"]

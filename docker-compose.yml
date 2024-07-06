@@ -1,0 +1,47 @@
+services:
+
+  export_trivy_scan:
+    build:
+      dockerfile: Dockerfile.trivy
+    environment:
+      - DD_URL=http://172.17.7.54:8080
+      - DD_API_KEY=9252f93d227069621be83d2cb39a8c0df7fb5cd1
+      - DD_PRODUCT_TYPE_NAME=Type
+      - DD_PRODUCT_NAME=Product
+      - DD_ENGAGEMENT_NAME=Engagement
+      - DD_TEST_NAME=testtrivy
+      - DD_TEST_TYPE_NAME=Trivy Scan
+      - DD_FILE_NAME=report.json
+    volumes:
+      - ./src:/src
+    
+  export_zap_scan:
+    build:
+      dockerfile: Dockerfile.trivy
+    environment:
+      - DD_URL=http://172.17.7.54:8080
+      - DD_API_KEY=9252f93d227069621be83d2cb39a8c0df7fb5cd1
+      - DD_PRODUCT_TYPE_NAME=Type
+      - DD_PRODUCT_NAME=Product
+      - DD_ENGAGEMENT_NAME=Engagement
+      - DD_TEST_NAME=testzap
+      - DD_TEST_TYPE_NAME=ZAP Scan
+      - DD_FILE_NAME=report.xml
+    volumes:
+      - ./src:/src
+    
+  export_gitleaks_scan:
+    build:
+      dockerfile: Dockerfile.trivy
+    environment:
+      - DD_URL=http://172.17.7.54:8080
+      - DD_API_KEY=9252f93d227069621be83d2cb39a8c0df7fb5cd1
+      - DD_PRODUCT_TYPE_NAME=Type
+      - DD_PRODUCT_NAME=Product
+      - DD_ENGAGEMENT_NAME=Engagement
+      - DD_TEST_NAME=testgitleaks
+      - DD_TEST_TYPE_NAME=Gitleaks Scan
+      - DD_FILE_NAME=gitleaks_report.json
+    volumes:
+      - ./src:/src
+  
