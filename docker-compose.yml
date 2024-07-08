@@ -1,20 +1,19 @@
-version: '3.8'
-services:
- android:
-    image: budtmo/docker-android:emulator_11.0_v2.0
-    environment:
-      - EMULATOR_DEVICE=Samsung Galaxy S10
-      - WEB_VNC=true
-    devices:
-      - /dev/kvm:/dev/kvm
-    
-    working_dir: /home/androidusr/tmp
-    command: "/bin/bash -c './gradlew build'"
-    
+version: '2.2'
 
-    privileged: true
-    ports: 
-      - "6080:6080" #from android service    
+services:
+  dockerrunandroid:
+    build:
+      context: .
     tty: true
-    stdin_open: true
-    container_name: react-native-dev
+    network_mode: "host"
+    ports:
+      - '5037:5037'
+    volumes:
+      # change dockerRunAndroid to your project name
+      - ./:/opt/my-app
+     
+    healthcheck:
+      disable: true
+    
+volumes:
+  notused:

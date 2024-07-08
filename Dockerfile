@@ -67,12 +67,7 @@ RUN chmod +x /etc/profile.d/gradle.sh
 RUN sh /etc/profile.d/gradle.sh
 ENV PATH=${PATH}:/opt/gradle/gradle-7.3.3/bin
 RUN gradle -v
-# install nodejs using n
-RUN curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n \
-    && bash n $NODE_VERSION \
-    && rm n \
-    && npm install -g n \
-    && npm install -g yarn
+
 
 # Full reference at https://dl.google.com/android/repository/repository2-1.xml
 # download and unpack android
