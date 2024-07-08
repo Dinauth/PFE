@@ -8,6 +8,10 @@ export const SignInReducer = (state,action) =>{
                 return{
                     userCard:action.payload.userCard
                 }
+        case  'ORDER_UPDATE':
+            return{
+                orderCard:action.payload.orderCard
+            }
         default:
             return state
     }

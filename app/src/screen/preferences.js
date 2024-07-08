@@ -1,5 +1,5 @@
 import React, { Component,useContext } from 'react'
-import { Text, StyleSheet, View,ScrollView,Image,Platform, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, View,ScrollView,Image,Platform, TouchableOpacity, Alert } from 'react-native'
 import {colors} from '../global/style'
 import {
     Icon,
@@ -22,7 +22,8 @@ export  class PreferenceScreen extends Component {
             totalPrice:0, 
             restaurantID:menuDetailedData[this.props.route.params.index].restaurantID,
             meal:menuDetailedData[this.props.route.params.index].meal,
-            id:this.props.route.params.index
+            id:this.props.route.params.index,
+            order:false
         }
        
         this.totalPrice=0
@@ -232,6 +233,10 @@ export  class PreferenceScreen extends Component {
                         this.state.totalPrice=this.totalPrice
                         this.props.navigation.navigate("RestaurantHome",{id:this.state.restaurantID,name:" ",state:this.state})
                     }else{
+                      Alert.alert(
+                        "Not complete",
+                        "Complete your card"
+                    )
                         console.log("not complete")
                          checked=true;
                     }

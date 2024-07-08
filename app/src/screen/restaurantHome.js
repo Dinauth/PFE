@@ -31,6 +31,7 @@ export const RestaurantHome = ({navigation,route})=>{
                 signedIn.userCard.push(route.params.state)
                 console.log("existe")
                 dispatchSignedIn({type:"CARD_UPDATE",payload:{userCard:signedIn.userCard}})
+                dispatchSignedIn({type:"ORDER_UPDATE",payload:{orderCard:signedIn.userCard}})
                 route.params.state=null
             }else{
                 dispatchSignedIn({type:"CARD_UPDATE",payload:{userCard:[route.params.state]}})

@@ -1,5 +1,5 @@
 import React,{useState,useContext,useEffect,Component} from "react";
-import { FlatList, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, TouchableOpacity, View,Alert } from "react-native";
 import { colors } from "../global/style";
 import { Icon } from "react-native-elements";
 import { menuDetailedData, optionDelivery, restaurantData } from "../global/data";
@@ -13,7 +13,7 @@ export  class InfoCard extends Component {
         super(props);
         this.state ={
             indexCheck:"0",
-            card:this.props.route.params.card,
+            card:this.props.route.params ? this.props.route.params.card:this.props.order,
             price:0
       }
       if (this.state.card) {
@@ -246,7 +246,11 @@ export  class InfoCard extends Component {
                 
                 <TouchableOpacity
                 onPress={()=>{
-                    this.props.navigation.navigate("Checkout")
+                    Alert.alert(
+                        "Saved",
+                        "order saved"
+                    )
+                   this.props.navigation.navigate("Checkout",{card:this.state.card})
                 }}
                 style={{...styles.checkView,flex:1}}
                 >
