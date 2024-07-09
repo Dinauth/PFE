@@ -1,0 +1,6 @@
+FROM maibornwolff/dd-import:latest
+
+COPY bandit_results.json .
+
+ENTRYPOINT ["dd-reimport-findings.sh"]
+
