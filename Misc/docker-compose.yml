@@ -1,0 +1,17 @@
+services:
+
+  export_bandit_scan:
+    build:
+      dockerfile: Dockerfile.bandit_export
+    environment:
+      - DD_URL=http://172.26.0.1:8080
+      - DD_API_KEY=9252f93d227069621be83d2cb39a8c0df7fb5cd1
+      - DD_PRODUCT_TYPE_NAME=Type
+      - DD_PRODUCT_NAME=Product
+      - DD_ENGAGEMENT_NAME=Engagement
+      - DD_TEST_NAME=TestBandit
+      - DD_TEST_TYPE_NAME=Bandit Scan
+      - DD_FILE_NAME=bandit_results.json
+      - DD_MINIMUM_SEVERITY=Medium
+    volumes:
+      - ./src:/src
