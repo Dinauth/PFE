@@ -76,14 +76,9 @@ RUN curl -sS https://dl.google.com/android/repository/${SDK_VERSION} -o /tmp/sdk
     && unzip -q -d ${ANDROID_HOME}/cmdline-tools /tmp/sdk.zip \
     && mv ${ANDROID_HOME}/cmdline-tools/cmdline-tools ${ANDROID_HOME}/cmdline-tools/latest \
     && rm /tmp/sdk.zip \
-    && yes | sdkmanager --licenses \
-    && yes | sdkmanager "platform-tools" \
-        "platforms;android-$ANDROID_BUILD_VERSION" \
-        "build-tools;$ANDROID_TOOLS_VERSION" \
-        "cmake;$CMAKE_VERSION" \
-        "ndk;$NDK_VERSION" \
-    && rm -rf ${ANDROID_HOME}/.android \
-    && chmod 777 -R /opt/android
+    && yes | sdkmanager --licenses 
+
+RUN sdkmanager "platform-tools" "emulator" "platforms;android-$ANDROID_BUILD_VERSION" "system-images;android-29;google_apis;x86_64"
 
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x |  bash -  
 RUN apt install -y nodejs
@@ -100,7 +95,21 @@ RUN npm install
 # Commande pour démarrer l'émulateur en mode sans tête
 #ENTRYPOINT  && npx expo run:android
 
+
+
+
+#CMD avdmanager list devices
+
+
+RUN avdmanager create avd --name Pixel_3a_API_34 --device "pixel_2_xl" --package "system-images;android-29;google_apis;x86_64" --abi "google_apis/x86_64" --force
+
+# Exposition du port pour ADB
+EXPOSE 5554 5555 5556 5557 5558 5585 5037 
+
+
 #CMD  
-CMD ["npx","expo", "run:android"]
+#CMD ["npx","expo", "run:android"]
+
+
 
 

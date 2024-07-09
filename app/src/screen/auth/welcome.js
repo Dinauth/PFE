@@ -27,28 +27,28 @@ export function SignWelcome({navigation}) {
         <View style={{flex:1}}>
 
                     <View style={{flex:3, justifyContent:'flex-start', alignItems:'center', marginTop:10, paddingTop:10}}>
-                        <Text style={{fontSize:26, color:colors.buttons, fontWeight:"bold"}}>DISCOVER .............4</Text>
+                        <Text style={{fontSize:26, color:colors.buttons, fontWeight:"bold"}}>DISCOVER RESTAURANT</Text>
                         <Text style={{fontSize:26, color:colors.buttons, fontWeight:"bold"}}> IN YOUR AREA</Text>
                         
                     </View>
                     <View style={{flex:3, justifyContent:'center'}}>
                        <Swiper autoplay={true}>
                         <View style={styles.slide1}>
-                            <Image source = {{uri:"https://www.html.am/images/html-codes/links/boracay-white-beach-sunset-300x225.jpg"}}
+                            <Image source = {{uri:"https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?cs=srgb&dl=pexels-chanwalrus-958545.jpg&fm=jpg"}}
                             style= {{height:"100%", width: "100%"}}
                              />
 
                         </View>
 
                         <View style={styles.slide2}>
-                            <Image source = {{uri:"https://www.html.am/images/html-codes/links/boracay-white-beach-sunset-300x225.jpg"}}
+                            <Image source = {{uri:"https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg"}}
                             style= {{height:"100%", width: "100%"}}
                              />
 
                         </View>
 
                         <View style={styles.slide3}>
-                            <Image source = {{uri:"https://www.html.am/images/html-codes/links/boracay-white-beach-sunset-300x225.jpg"}}
+                            <Image source = {{uri:"https://hungerstation.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhero.a7197273.jpg&w=1440&q=75"}}
                             style= {{height:"100%", width: "100%"}}
                              />
 

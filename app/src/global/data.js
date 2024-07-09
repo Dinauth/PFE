@@ -1,25 +1,25 @@
-export const filterData = [{name:"Fast food",image: require('../../assets/icon.png'), id:"0"},
-                    {name:"Burgers",image:require("../../assets/icon.png"),id:"1"},
-                    {name:"Salads",image:require("../../assets/splash.png"),id:"2"},
-                    {name:"Hotdog",image:require("../../assets/splash.png"),id:"3"},
-                    {name:"Chinese",image:require("../../assets/splash.png"),id:"4"},
-                    {name:"Mexican",image:require("../../assets/icon.png"),id:"5"},
-                    {name:"Sea food",image:require("../../assets/splash.png"),id:"6"},
+export const filterData = [{name:"Fast food",image: require('../../assets/b.jpeg'), id:"0"},
+                    {name:"Burgers",image:require("../../assets/n.jpg"),id:"1"},
+                    {name:"Salads",image:require("../../assets/b.jpeg"),id:"2"},
+                    {name:"Hotdog",image:require("../../assets/c.jpg"),id:"3"},
+                    {name:"Chinese",image:require("../../assets/c.jpg"),id:"4"},
+                    {name:"Mexican",image:require("../../assets/b.jpeg"),id:"5"},
+                    {name:"Sea food",image:require("../../assets/n.jpg"),id:"6"},
                 ];
 
 
 
 
-export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-east-2.amazonaws.com/chicken.png' , id:"0"},
-{name:"Burgers",image:require("../../assets/icon.png"),id:"1"},
-{name:"Salads",image:require("../../assets/icon.png"),id:"2"},
-{name:"Hotdog",image:require("../../assets/icon.png"),id:"3"},
-{name:"Chinese",image:require("../../assets/icon.png"),id:"4"},
-{name:"Mexican",image:require("../../assets/icon.png"),id:"5"},  
-{name:"Sea food",image:require("../../assets/icon.png"),id:"6"},
-{name:"Chinese Food",image:require("../../assets/icon.png"),id:"7"},
-{name:"Mexican pie",image:require("../../assets/icon.png"),id:"8"},  
-{name:"Ocean dish",image:require("../../assets/icon.png"),id:"9"},
+export const categoryData = [{name:"Fast food",image:'https://thumbs.dreamstime.com/b/bombay-potato-curry-indian-food-29146242.jpg' , id:"0"},
+{name:"Burgers",image:require("../../assets/b.jpeg"),id:"1"},
+{name:"Salads",image:require("../../assets/c.jpg"),id:"2"},
+{name:"Hotdog",image:require("../../assets/b.jpeg"),id:"3"},
+{name:"Chinese",image:require("../../assets/n.jpg"),id:"4"},
+{name:"Mexican",image:require("../../assets/b.jpeg"),id:"5"},  
+{name:"Sea food",image:require("../../assets/b.jpeg"),id:"6"},
+{name:"Chinese Food",image:require("../../assets/n.jpg"),id:"7"},
+{name:"Mexican pie",image:require("../../assets/b.jpeg"),id:"8"},  
+{name:"Ocean dish",image:require("../../assets/c.jpg"),id:"9"},
 ];
 
 
@@ -28,59 +28,59 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
 
  export const restaurantData = [
                   {restaurantName:"Mc Donalds", farAway:"21.2",
-                  businessAddress:"22 Bessie street, Cape Town",image:require("../../assets/icon.png"),
+                  businessAddress:"22 Bessie street, Cape Town",image:require("../../assets/b.jpeg"),
                   averageReview:4.9,numberOfReview:272,coordinates : {lat: 43.3149, lng: -0.3657} ,discount:10,deliveryTime:15,
                   collectTime:5, foodType:"Burgers, Wraps,Milkshakes..." ,
-                  productData:[{name:"Hand cut chips", price:29.30,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate5.png"},
-                  {name:"Big Mac", price:50.80,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate4.png"},{name:"Chicken Burger",
-                   price:70,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png"},
+                  productData:[{name:"Hand cut chips", price:29.30,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"},
+                  {name:"Big Mac", price:50.80,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"},{name:"Chicken Burger",
+                   price:70,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"},
                     ],
                   id:0},
                   
                   {restaurantName:"KFC", farAway:"12.7",businessAddress:"22 Bessie street, Cape Town",
-                  image:require("../../assets/icon.png"),
+                  image:require("../../assets/n.jpg"),
                   averageReview:4.3, numberOfReview:306, coordinates : {lat: 43.315284, lng: -0.346831},
                   discount:20,deliveryTime:30,collectTime:10, foodType:"Chicken,Chicken wings... ",
-                  productData:[{name:"Hand cut chips", price:29.30,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate5.png"},
-                  {name:"Big Mac", price:50.80,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate4.png"},
-                  {name:"Chicken Burger", price:70,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png"},
+                  productData:[{name:"Hand cut chips", price:29.30,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"},
+                  {name:"Big Mac", price:50.80,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"},
+                  {name:"Chicken Burger", price:70,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"},
                       ],
                   id:1},
                   
                   {restaurantName:"Burger king", farAway:"5",businessAddress:" 17 Olivia Rd, Johannesburg",
-                  image:require("../../assets/icon.png"),
+                  image:require("../../assets/c.jpg"),
                    coordinates :{ lat: 43.3333, lng: -0.3645}, averageReview: 4.9,numberOfReview: 1272,
                     discount:12, deliveryTime:25,collectTime:15,foodType:"Flame grilled beef Burgers",
-                   productData:[{name:"Hand cut chips", price:29.30,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate5.png"},
-                    {name:"Big Mac", price:50.80,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate4.png"},{name:"Chicken Burger",
-                     price:70,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png"},
+                   productData:[{name:"Hand cut chips", price:29.30,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"},
+                    {name:"Big Mac", price:50.80,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"},{name:"Chicken Burger",
+                     price:70,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"},
                       ],
                    id:2},
                   
                   {restaurantName:"Domino's Pizza", farAway:"7",businessAddress:" 15 Atlas Rd, Kempton Park",
-                  images:'https://bukasapics.s3.us-east-2.amazonaws.com/pizza6.png',
+                  images:'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
                   averageReview:4.3, numberOfReview:700, coordinates: {lat: 43.3025, lng: -0.3682},
                   discount:null,deliveryTime:20,collectTime:10,foodType:"Chicken pizza, Vegetarian pizza...",
-                  productData:[{name:"Hand cut chips", price:29.30,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate5.png"},
-                    {name:"Big Mac", price:50.80,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate4.png"},{name:"Chicken Burger",
-                     price:70,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png"},
+                  productData:[{name:"Hand cut chips", price:29.30,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"},
+                    {name:"Big Mac", price:50.80,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"},{name:"Chicken Burger",
+                     price:70,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"},
                       ],
                   id:3},
                   ]
     
 
 
-              export const productData = [{name:"Hand cut chips", price:29.30,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate5.png",
+              export const productData = [{name:"Hand cut chips", price:29.30,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg",
               details:"Two 100% fresh beef burger patties that are hot,deliciously",id:0},
-                {name:"Big Mac", price:50.80,image:require("../../assets/icon.png"),
+                {name:"Big Mac", price:50.80,image:require("../../assets/c.jpg"),
                 details:"McFeast features two 100% fresh beef burger patties that are hot",id:1},
-                {name:"Chicken Burger", price:70,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png",details:"",id:2},
+                {name:"Chicken Burger", price:70,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg",details:"",id:2},
                 
-                {name:"Hand cut chips", price:29.30,image:require("../../assets/icon.png"),
+                {name:"Hand cut chips", price:29.30,image:require("../../assets/b.jpeg"),
                 details:"Two 100% fresh beef burger patties that are hot,deliciously",id:3},
-                {name:"Big Mac", price:70.20,image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate1.png",
+                {name:"Big Mac", price:70.20,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg",
                 details:"McFeast features two 100% fresh beef burger patties that are hot",id:4},
-                {name:"Chicken Burger", price:70,image:"https://bukasapics.s3.us-east-2.amazonaws.com/chicken.png",details:"",id:5},
+                {name:"Chicken Burger", price:70,image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg",details:"",id:5},
               
                   ];   
                   
@@ -124,7 +124,7 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
             { 
               meal:"Big Mac",
               price:70.20,
-              image:require("../../assets/splash.png"),
+              image:require("../../assets/b.jpeg"),
               details:"McFeast features two 100% fresh beef burger patties that are hot",
               preferenceTitle:["Choose your 2 dips","Choose your 1st drink flavour", "Choose your 2nd drink flavour","Would you like to add a side?","Would you Like any extra sauce?"  ],
               preferenceData: [
@@ -163,7 +163,7 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
               
               meal:"Hand cut chips", 
               price:29.30,
-              image:require("../../assets/icon.png"),
+              image:require("../../assets/c.jpg"),
               details:"Two 100% fresh beef burger patties that are hot,deliciously",
               
               preferenceTitle:["Choose your 2 dips","Choose your 1st drink flavour", "Choose your 2nd drink flavour","Would you like to add a side?","Would you Like any extra sauce?"  ],
@@ -204,7 +204,7 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
             {
               meal:"Chicken Burger",
               price:45.70,
-              image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate3.png",
+              image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg",
               details:"",
               preferenceTitle:["Choose your 2 dips","Choose your 1st drink flavour", "Choose your 2nd drink flavour","Would you like to add a side?","Would you Like any extra sauce?"  ],
               preferenceData: [
@@ -242,7 +242,7 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
             {
               meal:"Big Mac",
               price:50.80,
-              image:require("../../assets/icon.png"),
+              image:require("../../assets/c.jpg"),
               details:"McFeast features two 100% fresh beef burger patties that are hot",
               preferenceTitle:["Choose your 2 dips","Choose your 1st drink flavour", "Choose your 2nd drink flavour","Would you like to add a side?","Would you Like any extra sauce?"  ],
               preferenceData: [
@@ -282,7 +282,7 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
               
               meal:"Hand cut chips", 
               price:29.30,
-              image:require("../../assets/icon.png"),
+              image:require("../../assets/n.jpg"),
               details:"Two 100% fresh beef burger patties that are hot,deliciously",
               
               preferenceTitle:["Choose your 2 dips","Choose your 1st drink flavour", "Choose your 2nd drink flavour","Would you like to add a side?","Would you Like any extra sauce?"  ],
@@ -322,7 +322,7 @@ export const categoryData = [{name:"Fast food",image:'https://bukasapics.s3.us-e
             { 
               meal:"Big Mac",
               price:70.20,
-              image:"https://bukasapics.s3.us-east-2.amazonaws.com/plate1.png",
+              image:"https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg",
               details:"McFeast features two 100% fresh beef burger patties that are hot",
               preferenceTitle:["Choose your 2 dips","Choose your 1st drink flavour", "Choose your 2nd drink flavour","Would you like to add a side?","Would you Like any extra sauce?"  ],
               preferenceData: [

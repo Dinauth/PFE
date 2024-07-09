@@ -1,19 +1,30 @@
 version: '2.2'
 
 services:
-  dockerrunandroid:
+  android:
+    image: budtmo/docker-android:emulator_14.0
+    network_mode: "service:react-native-dev"
+    environment:
+      - DATAPARTITION=4g
+      - EMULATOR_DEVICE=Samsung Galaxy S10
+      - WEB_VNC=true
+    privileged: true
+    depends_on:
+      - react-native-dev
+  react-native-dev:
     build:
       context: .
-    tty: true
-    network_mode: "host"
-    ports:
-      - '5037:5037'
     volumes:
-      # change dockerRunAndroid to your project name
-      - ./:/opt/my-app
+      - ./app:/app
+      - ./app/android/gradle:/app/.gradle
+    working_dir: /app
+    command: "/bin/bash -c 'npm i && npm run android'"
+    ports: 
+      - "6080:6080" #from android service
+      
+    tty: true
+    stdin_open: true
+    container_name: react-native-dev
      
-    healthcheck:
-      disable: true
-    
 volumes:
-  notused:
+  gradle:
