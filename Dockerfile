@@ -89,13 +89,18 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x |  bash -
 RUN apt install -y nodejs
 RUN npm i --unsafe-perm -g npm@latest expo-cli@latest
 
-RUN mkdir /opt/my-app && chown root:root /opt/my-app
-WORKDIR /opt/my-app
+WORKDIR /app
+
 
 # for development, we bind mount volumes; comment out for production
-COPY ./app /opt/my-app/
-
+COPY app/ .
 RUN npm install
 
-#CMD ["npx","expo", "run:android"]
+
+# Commande pour démarrer l'émulateur en mode sans tête
+#ENTRYPOINT  && npx expo run:android
+
+#CMD  
 CMD ["npx","expo", "run:android"]
+
+

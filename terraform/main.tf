@@ -26,8 +26,8 @@ resource "docker_image" "build" {
 resource "docker_container" "container" {
   image = docker_image.build.image_id
   name  = "container"
- # ports {
-    # internal = 5037 # Port interne du conteneur
-    # external = 5037 # Port externe
- # }
+  ports {
+     internal = 5037 # Port interne du conteneur
+     external = 5037 # Port externe
+  }
 }
